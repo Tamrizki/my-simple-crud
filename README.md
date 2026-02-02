@@ -59,3 +59,9 @@ lib/
 Pada proyek ini, untuk komunikasi data dengan server, digunakan **JSONPlaceholder API**, yaitu layanan API publik yang menyediakan data palsu untuk keperluan pengujian dan pengembangan.
 
 - link : https://jsonplaceholder.typicode.com/guide/
+
+## Preview
+
+
+https://github.com/user-attachments/assets/91faf8f5-3300-4e7b-9a22-c5d938db50c5
+
