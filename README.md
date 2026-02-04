@@ -1,58 +1,46 @@
 # my_simple_crud
 
-Ini adalah aplikasi sederhana yang dibangun menggunakan **Dart/Flutter** dengan **GetX** sebagai state management, menerapkan prinsip **Clean Architecture**, dan menggunakan **Dio** untuk komunikasi HTTP. Proyek ini menunjukkan cara mengatur arsitektur yang terorganisir dan skalabel pada aplikasi Flutter.
+Proyek Flutter sederhana ini menerapkan state management menggunakan Cubit, Clean Architecture, dan dependency injection (DI) dengan GetIt.
 
-## Teknologi yang Digunakan
+## Arsitektur
+### 1. Manajemen State dengan Cubit
 
-- **Flutter**: Framework untuk membangun aplikasi mobile.
-- **GetX**: State management yang ringan dan mudah digunakan untuk Flutter.
-- **Clean Architecture**: Pendekatan untuk memisahkan lapisan-lapisan aplikasi agar lebih mudah dikelola dan diuji.
-- **Dio**: Library HTTP client yang cepat dan fleksibel untuk berinteraksi dengan API.
+Cubit digunakan untuk mengelola state aplikasi. UI akan diperbarui berdasarkan perubahan state yang dipicu oleh logika dalam Cubit.
 
-## Struktur Proyek
-```
+- **home_cubit.dart**: Mengelola logika dan state untuk halaman Home.
+- **home_state.dart**: Mendefinisikan berbagai state untuk halaman Home.
+
+### 2. Clean Architecture
+
+Proyek ini mengikuti Clean Architecture dengan membagi kode menjadi lapisan-lapisan berikut:
+
+- Data Layer: Menangani data sumber, model, dan repositori.
+- Domain Layer: Berisi logika bisnis dan entitas.
+- Presentation Layer: Berisi UI dan Cubit untuk halaman Home.
+
+### 3. Dependency Injection dengan GetIt
+
+GetIt digunakan untuk mengelola dependensi dan mempermudah akses layanan di seluruh aplikasi.
+- injection_container.dart: Mengonfigurasi dan mendaftarkan dependensi menggunakan GetIt.
+
+## Dependencies
+
+- dio: ^5.9.1 - HTTP client untuk Flutter.
+- flutter_bloc: ^9.1.1 - Package untuk manajemen state menggunakan Cubit.
+- bloc: ^9.2.0 - Library inti untuk BLoC.
+- equatable: ^2.0.8 - Membantu membandingkan objek di state.
+- get_it: ^9.2.0 - Service locator untuk dependency injection (DI).
+
+## Struktur Folder
+
 lib/
-├── data/
-│ ├── datasources/
-│ │ ├── datasource_impl.dart
-│ │ └── datasource.dart
-│ ├── models/
-│ │ ├── base_response_model.dart
-│ │ └── post_item_model.dart
-│ └── repositories/
-│ ├── repositories_impl.dart
-│ └── repositories.dart
-├── domain/
-│ ├── entities/
-│ │ └── post_item.dart
-│ ├── mappers/
-│ │ └── post_item_mapper.dart
-│ └── params/
-│ └── post_params.dart
-├── presentation/
-│ ├── home/
-│ │ ├── get/
-│ │ │ ├── home_binding.dart
-│ │ │ ├── home_controller.dart
-│ │ ├── page/
-│ │ │ └── home_page.dart
-│ ├── main/
-│ │ ├── main_binding.dart
-│ │ └── pages.dart
-└── main.dart
-.gitignore
-```
 
-- **data**: Menyimpan lapisan data seperti data sources (API atau database), models, dan repositori.
-- **domain**: Berisi entitas yang mewakili objek dalam aplikasi serta logika bisnis (mappers, params).
-- **presentation**: Berisi tampilan aplikasi, seperti halaman utama dan logika tampilan (controller dan binding) dengan **GetX**.
-- **main.dart**: Titik masuk aplikasi yang menginisialisasi dan menjalankan aplikasi Flutter.
-
-## Fitur Utama
-
-- **State Management dengan GetX**: Memudahkan pengelolaan state aplikasi secara reaktif.
-- **Clean Architecture**: Memisahkan aplikasi ke dalam beberapa lapisan (Data, Domain, dan Presentation) untuk meningkatkan keterbacaan dan pemeliharaan kode.
-- **HTTP Requests dengan Dio**: Menggunakan Dio untuk membuat permintaan HTTP yang efisien dan mudah dikelola.
+- consts: Berisi nilai konstan.
+- data: Data source, model, dan repositori.
+- di: Konfigurasi DI menggunakan GetIt.
+- domain: Entitas dan logika bisnis.
+- presentation/home: UI dan Cubit untuk halaman Home.
+- page: Halaman utama aplikasi.
 
 ## Sumber Endpoint
 
