@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:my_simple_crud/presentation/main/main_binding.dart';
-import 'package:my_simple_crud/presentation/main/pages.dart';
+import 'presentation/home/page/home_page.dart';
+import 'di/injection_container.dart' as di;
 
-void main() {
+void main() async {
+  await di.init();
   runApp(const MyApp());
 }
 
@@ -12,11 +12,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
+    return MaterialApp(
       title: 'My Simple CRUD App',
-      getPages: Pages.routes,
-      initialRoute: Pages.initailRoutes,
-      initialBinding: MainBinding(),
+      theme: ThemeData(primarySwatch: Colors.blue),
+      home: const HomePage(),
     );
   }
 }
